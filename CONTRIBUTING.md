@@ -1,7 +1,7 @@
 
 ## Contributing
 
-We welcome all contributions!  Please head to [issues](https://github.com/include-dcc/include-shiny-template/issues) to either file any bugs/feature requests or find a task you want to assist with.  Make sure to assign yourself the task if you decide to work on it.
+We welcome all contributions!  Please head to [issues](https://github.com/include-dcc/clinical-include-r/issues) to either file any bugs/feature requests or find a task you want to assist with.  Make sure to assign yourself the task if you decide to work on it.
 
 
 ### Fork and clone this repository

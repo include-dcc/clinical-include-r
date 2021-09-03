@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# INCLUDE Shiny Template
+# Clinical Include R Shiny Application
 
 <!-- badges: start -->
 
@@ -15,18 +15,18 @@ structure.
 
 ## Installation
 
-You can install the released version of includeshinytemplate from
+You can install the released version of clinicalincluder from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("includeshinytemplate")
+install.packages("clinicalincluder")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("include-dcc/include-shiny-template")
+devtools::install_github("include-dcc/clinical-include-r")
 ```
 
 ## Example
@@ -34,7 +34,7 @@ devtools::install_github("include-dcc/include-shiny-template")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(includeshinytemplate)
+library(clinicalincluder)
 #> Error in get(genname, envir = envir) : object 'testthat_print' not found
 ## basic example code
 ```
