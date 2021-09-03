@@ -12,7 +12,8 @@ app_ui <- function(request) {
     # List the first level UI elements here 
 
     fluidPage(
-      mod_hello_world_ui("hello_world_1")
+     #  mod_hello_world_ui("hello_world_1")
+      mod_synapse_ui("synapse_1")
     )
   )
 }

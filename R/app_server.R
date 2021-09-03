@@ -6,5 +6,6 @@
 #' @noRd
 app_server <- function( input, output, session ) {
   # List the first level callModules here
-  shiny::moduleServer("hello_world_1", mod_hello_world_server)
+  # shiny::moduleServer("hello_world_1", mod_hello_world_server)
+  shiny::moduleServer("synapse_1", mod_synapse_server)
 }
