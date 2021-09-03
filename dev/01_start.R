@@ -14,13 +14,13 @@
 ## Fill the DESCRIPTION ----
 ## Add meta data about your application
 golem::fill_desc(
-  pkg_name = "includeshinytemplate", # The Name of the package containing the App 
-  pkg_title = "INCLUDE Shiny Template", # The Title of the package containing the App 
-  pkg_description = "This is an hello world shiny application for INCLUDE.", # The Description of the package containing the App 
+  pkg_name = "clinicalincluder", # The Name of the package containing the App
+  pkg_title = "INCLUDE Clinical application", # The Title of the package containing the App
+  pkg_description = "This application will load clinical data from Synapse.", # The Description of the package containing the App
   author_first_name = "Thomas", # Your First Name
   author_last_name = "Yu", # Your Last Name
   author_email = "thomas.yu@sagebase.org", # Your Email
-  repo_url = NULL # The URL of the GitHub Repo (optional) 
+  repo_url = "https://github.com/include-dcc/clinical-include-r" # The URL of the GitHub Repo (optional)
 )     
 
 ## Set {golem} options ----
@@ -28,7 +28,7 @@ golem::set_golem_options()
 
 ## Create Common Files ----
 ## See ?usethis for more information
-usethis::use_mit_license( name = "Golem User" )  # You can set another license here
+usethis::use_mit_license( name = "Thomas Yu" )  # You can set another license here
 usethis::use_readme_rmd( open = FALSE )
 usethis::use_code_of_conduct()
 usethis::use_lifecycle_badge( "Experimental" )

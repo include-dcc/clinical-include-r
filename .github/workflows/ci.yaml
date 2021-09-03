@@ -90,14 +90,14 @@ jobs:
   #       password: ${{ secrets.DOCKER_PASSWORD }}
   #       repository: ${{ env.docker_repository }}
 
-  deploy:
-    needs: [test]
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: upload directory
-        uses: include-dcc/cavatica-upload-action@v0.0.2
-        with:
-          auth_token: ${{ secrets.CAVATICA_AUTH_TOKEN }}
-          project_name: Test
-          path: "./"
+  # deploy:
+  #   needs: [test]
+  #   runs-on: ubuntu-18.04
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: upload directory
+  #       uses: include-dcc/cavatica-upload-action@v0.0.2
+  #       with:
+  #         auth_token: ${{ secrets.CAVATICA_AUTH_TOKEN }}
+  #         project_name: Test
+  #         path: "./"
