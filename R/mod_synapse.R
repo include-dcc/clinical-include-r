@@ -1,5 +1,3 @@
-library(reticulate)
-reticulate::use_condaenv("synapse", required = T)
 #' synapse UI Function
 #'
 #' @description A shiny Module.
@@ -18,9 +16,13 @@ mod_synapse_ui <- function(id){
     
 #' synapse Server Function
 #'
+#' @import reticulate
+#' @import DT
+#'
 #' @noRd 
 mod_synapse_server <- function(input, output, session){
   ns <- session$ns
+  reticulate::use_condaenv("synapse", required = T)
   synapseclient <- reticulate::import('synapseclient')
   syn <- synapseclient$Synapse()
   syn$login()
