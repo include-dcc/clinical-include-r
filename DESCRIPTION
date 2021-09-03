@@ -1,8 +1,8 @@
-Package: includeshinytemplate
-Title: INCLUDE Shiny Template
+Package: clinicalincluder
+Title: INCLUDE Clinical application
 Version: 0.0.0.9000
 Authors@R: person('Thomas', 'Yu', email = 'thomas.yu@sagebase.org', role = c('cre', 'aut'))
-Description: This is an hello world shiny application for INCLUDE.
+Description: This application will load clinical data from Synapse.
 License: What license is it under?
 Imports: 
     config,
@@ -18,3 +18,5 @@ LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
     testthat
+URL: https://github.com/include-dcc/clinical-include-r
+BugReports: https://github.com/include-dcc/clinical-include-r/issues
