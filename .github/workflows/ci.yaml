@@ -1,0 +1,103 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+name: R-CMD-check
+
+jobs:
+
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install ubuntu dependencies
+        run: |
+          sudo apt-get install -y libcurl4-openssl-dev
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: '4.0.2'
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install dependencies
+        run: |
+          install.packages(c('remotes', 'rcmdcheck', 'usethis', 'golem'))
+          remotes::install_local(upgrade="never")
+        shell: Rscript {0}
+
+      # - name: Install Miniconda
+      #   run: |
+      #     Rscript -e "remotes::install_github('rstudio/reticulate')"
+      #     Rscript -e "reticulate::install_miniconda()"
+      # - name: Add Miniconda to .Rprofile on macOS
+      #   if: runner.os == 'macOS'
+      #   run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
+
+      # - name: Install Python deps
+      #   run: |
+      #     Rscript -e "reticulate::py_discover_config()"
+      #     Rscript -e "reticulate::py_install(c('pandas', 'numpy', 'boto3', 'synapseclient'), pip = TRUE)"
+
+      # - name: Setup Synapse config file for testing
+      #   if: runner.os != 'Windows'
+      #   run: |
+      #     OUTPUT_FILE=~/.synapseConfig
+      #     cat > "$OUTPUT_FILE" << EOM
+      #     [authentication]
+      #     username = "${{ secrets.SYNAPSE_USER }}"
+      #     apikey = "${{ secrets.SYNAPSE_APIKEY}}"
+      #     EOM
+      #     chmod +x "$OUTPUT_FILE"
+
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          path: check
+
+  # docker:
+  #   needs: [test]
+  #   runs-on: ubuntu-latest
+  #   if: startsWith(github.ref, 'refs/tags')
+  #   steps:
+  #   - name: Check out the repo
+  #     uses: actions/checkout@v2
+  #   - name: Log in to Docker Hub
+  #     uses: docker/login-action@v1
+  #     with:
+  #       username: ${{ secrets.DOCKER_USERNAME }}
+  #       password: ${{ secrets.DOCKER_PASSWORD }}
+  #   - name: Push to Docker Hub
+  #     uses: docker/build-push-action@v2
+  #     with:
+  #       push: true
+  #       tags: ${{ env.docker_repository }}:${{ github.ref }}
+  #   - name: Docker Hub Description
+  #     if: steps.prep.outputs.push == 'true'
+  #     uses: peter-evans/dockerhub-description@v2
+  #     with:
+  #       username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #       password: ${{ secrets.DOCKER_PASSWORD }}
+  #       repository: ${{ env.docker_repository }}
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: upload directory
+        uses: include-dcc/cavatica-upload-action@v0.0.2
+        with:
+          auth_token: ${{ secrets.CAVATICA_AUTH_TOKEN }}
+          project_name: Test
+          path: "./"
