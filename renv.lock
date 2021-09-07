@@ -450,6 +450,20 @@
       "Repository": "CRAN",
       "Hash": "ed95895886dab6d2a584da45503555da"
     },
+    "reactR": {
+      "Package": "reactR",
+      "Version": "0.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "75389c8091eb14ee21c6bc87a88b3809"
+    },
+    "reactable": {
+      "Package": "reactable",
+      "Version": "0.2.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ac1afe50d1c77470a72971a07fd146b1"
+    },
     "rematch2": {
       "Package": "rematch2",
       "Version": "2.1.2",
@@ -540,6 +554,20 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "ee4ed72d7a5047d9e73cf922ad66e9c9"
+    },
+    "shinydashboard": {
+      "Package": "shinydashboard",
+      "Version": "0.7.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "133639dc106955eee4ffb8ec73edac37"
+    },
+    "shinyjs": {
+      "Package": "shinyjs",
+      "Version": "2.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9ddfc91d4280eaa34c2103951538976f"
     },
     "sourcetools": {
       "Package": "sourcetools",
