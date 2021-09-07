@@ -3,6 +3,8 @@
 #' @param request Internal parameter for `{shiny}`. 
 #'     DO NOT REMOVE.
 #' @import shiny
+#' @import shinydashboard
+#'
 #' @noRd
 app_ui <- function(request) {
 
@@ -11,9 +13,13 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # List the first level UI elements here 
 
-    fluidPage(
-     #  mod_hello_world_ui("hello_world_1")
-      mod_synapse_ui("synapse_1")
+    dashboardPage(
+      dashbaordHeader(title = "INCLUDE Clinical App"),
+      dashboardSidebar(),
+      dashboardBody(
+       #  mod_hello_world_ui("hello_world_1")
+        mod_synapse_ui("synapse_1")
+      )
     )
   )
 }
