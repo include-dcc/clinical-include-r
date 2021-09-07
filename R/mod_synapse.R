@@ -18,14 +18,13 @@ mod_synapse_ui <- function(id){
 #'
 #' @import reticulate
 #' @import DT
-#'
 #' @noRd 
-mod_synapse_server <- function(input, output, session){
+mod_synapse_server <- function(input, output, session, syn){
   ns <- session$ns
-  reticulate::use_condaenv("synapse", required = T)
-  synapseclient <- reticulate::import('synapseclient')
-  syn <- synapseclient$Synapse()
-  syn$login()
+  # reticulate::use_condaenv("synapse", required = T)
+  # synapseclient <- reticulate::import('synapseclient')
+  # syn <- synapseclient$Synapse()
+  # syn$login()
   table = syn$tableQuery("select * from syn26136890")
   output$tbl <- DT::renderDT(table$asDataFrame())
 

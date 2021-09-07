@@ -7,21 +7,7 @@
 #'
 #' @noRd
 app_ui <- function(request) {
-
-  tagList(
-    # Leave this function for adding external resources
-    golem_add_external_resources(),
-    # List the first level UI elements here 
-
-    dashboardPage(
-      dashbaordHeader(title = "INCLUDE Clinical App"),
-      dashboardSidebar(),
-      dashboardBody(
-       #  mod_hello_world_ui("hello_world_1")
-        mod_synapse_ui("synapse_1")
-      )
-    )
-  )
+  mod_main_ui("main")
 }
 
 #' Add external Resources to the Application
@@ -42,7 +28,7 @@ golem_add_external_resources <- function(){
     favicon(),
     bundle_resources(
       path = app_sys('app/www'),
-      app_title = 'includeshinytemplate'
+      app_title = 'clinicalincluder'
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert() 

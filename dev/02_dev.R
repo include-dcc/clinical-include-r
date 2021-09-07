@@ -22,6 +22,7 @@ usethis::use_package( "shinydashboard" )
 ## Create a module infrastructure in R/
 golem::add_module( name = "hello_world" ) # Name of the module
 golem::add_module( name = "synapse" ) # Name of the module
+golem::add_module( name = "main" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*
