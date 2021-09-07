@@ -31,7 +31,8 @@ mod_main_ui <- function(id){
                     synapse_dt_ui(id=ns("synapse_dt"))
             ),
             tabItem(tabName = "syn_reactable",
-                    h2("Synapse and reactable")
+                    h2("Synapse and reactable"),
+                    synapse_reactable_ui(id=ns("synapse_reactable"))
             )
           )
         ),
@@ -51,6 +52,11 @@ mod_main_server <- function(id, syn){
       callModule(
         synapse_dt_server,
         "synapse_dt",
+        syn = syn
+      )
+      callModule(
+        synapse_reactable_server,
+        "synapse_reactable",
         syn = syn
       )
     }
