@@ -12,8 +12,10 @@ mod_main_ui <- function(id){
   dashboardPage(
     dashboardHeader(title = "INCLUDE Clinical Shiny App"),
     dashboardSidebar(
-      menuItem("DT", tabName = "syn_dt", icon = icon("dashboard")),
-      menuItem("Reactable", tabName = "syn_reactable", icon = icon("dashboard"))
+      sidebarMenu(
+        menuItem("DT", tabName = "syn_dt", icon = icon("dashboard")),
+        menuItem("Reactable", tabName = "syn_reactable", icon = icon("dashboard"))
+      )
     ),
     dashboardBody(
       #  mod_hello_world_ui("hello_world_1")
@@ -25,8 +27,8 @@ mod_main_ui <- function(id){
         list(
           tabItems(
             tabItem(tabName = "syn_dt",
-                    h2("Synapse and DT")
-                    #synapse_dt_ui(id=ns("synapse_dt"))
+                    h2("Synapse and DT"),
+                    synapse_dt_ui(id=ns("synapse_dt"))
             ),
             tabItem(tabName = "syn_reactable",
                     h2("Synapse and reactable")
@@ -46,11 +48,11 @@ mod_main_server <- function(id, syn){
   moduleServer(
     id,
     function(input, output, session) {
-      # callModule(
-      #   synapse_dt_server,
-      #   "synapse_dt",
-      #   syn = syn
-      # )
+      callModule(
+        synapse_dt_server,
+        "synapse_dt",
+        syn = syn
+      )
     }
   )
  
