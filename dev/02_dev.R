@@ -23,6 +23,7 @@ usethis::use_package( "shinydashboard" )
 # golem::add_module( name = "hello_world" ) # Name of the module
 golem::add_module( name = "synapse_dt" )
 golem::add_module( name = "synapse_reactable" )
+golem::add_module( name = "synapse_pick" )
 golem::add_module( name = "main" )
 
 ## Add helper functions ----

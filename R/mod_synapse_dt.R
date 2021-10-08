@@ -19,12 +19,28 @@ synapse_dt_ui <- function(id){
 #' @import reticulate
 #' @import DT
 #' @noRd 
-synapse_dt_server <- function(input, output, session, syn){
+synapse_dt_server <- function(input, output, session, syn, entity_id){
   ns <- session$ns
-  table = syn$tableQuery("select * from syn26136890")
+  entity = syn$get(entity_id)
+  if (entity$properties$concreteType %in% c("org.sagebionetworks.repo.model.table.SubmissionView",
+                                            "org.sagebionetworks.repo.model.table.TableEntity",
+                                            "org.sagebionetworks.repo.model.table.EntityView")) {
+    table = syn$tableQuery(glue::glue("select * from {entity_id}"))
+    table_df = table$asDataFrame()
+  } else if (entity$properties$concreteType == "org.sagebionetworks.repo.model.FileEntity") {
+    if (endsWith(entity$path, ".csv")) {
+      table_df = read.csv(entity$path, comment.char = "#")
+    } else if (endsWith(entity$path, ".tsv")) {
+      table_df = read.table(entity$path, comment.char = "#")
+    } else {
+      stop("Unsupported file type")
+    }
+  } else {
+    stop("Unsupported entity type")
+  }
   output$tbl <- DT::renderDT({
     DT::datatable(
-      table$asDataFrame(),
+      table_df,
       extensions = 'Buttons', options = list(dom = 'Bfrtip', buttons = I('colvis'))
     )
   })

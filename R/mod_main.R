@@ -52,7 +52,8 @@ mod_main_server <- function(id, syn){
       callModule(
         synapse_dt_server,
         "synapse_dt",
-        syn = syn
+        syn = syn,
+        entity_id = "syn26125086"
       )
       callModule(
         synapse_reactable_server,
